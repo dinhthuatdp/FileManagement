@@ -15,7 +15,7 @@ use App\Http\Controllers\YoloController;
 use App\Http\Controllers\Auth\LoginController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('dashboard');
 });
 
 Route::get('/yolo', function () {

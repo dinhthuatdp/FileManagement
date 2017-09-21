@@ -1,33 +1,9 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.master')
 
-        <title>Laravel 22</title>
+@section('title', 'Dash board')
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"  rel="stylesheet" type="text/css"/>
-        <script source="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    </head>
-    <body>
-        <div style="background-color: #EEE; height: 200px">
-
-            <div style="float: right">
-
-                @if (Session::has('sessionLogin'))
-                <a>{{ Session::get('sessionLogin')[0] }}</a> ||
-                <a href="signout"> Sign out</a> ||
-                @endif
-                <a href=""> Sign up</a>
-            </div>
-        </div>
-        <div style="width: 20%; min-height: 500px; background-color: bisque;float: left"></div>
-
-        <div style="float: left;align-items: center; width: 60%;background-color: #f5f5f5; min-height: 500px">
-            <section class="panel panel-heading panel-primary">
+@section('content')
+    <section class="panel panel-heading panel-primary">
                 <div class="panel-heading">
                     File management
                 </div>
@@ -62,14 +38,9 @@
                 <div style="text-align: center;padding-top: 20px;">
                     {{ $files->appends(array('numberPerPage' => $numberPerPage))->links('pagination.custom') }}
                 </div>
-            </section>
-        </div>
-        <div style="width: 20%; min-height: 500px; background-color: bisque; float: right">
+    </section>
+@stop
 
-        </div>
-
-    </body>
-</html>
 <script>
     function sortTable(columnName, files){
         $.ajax({
@@ -80,26 +51,25 @@
             alert( msg );
         });
     }
-function sortTable1(columnName, files){
- alert(columnName);
- alert('$files');
- var sort = $("#sort").val();
- $.ajax({
-  url:'fetch_details.php',
-  type:'post',
-  data:{columnName:columnName,sort:sort},
-  success: function(response){
- 
-   $("#empTable tr:not(:first)").remove();
- 
-   $("#empTable").append(response);
-   if(sort == "asc"){
-     $("#sort").val("desc");
-   }else{
-     $("#sort").val("asc");
-   }
- 
-  }
- });
-}
+    function sortTable1(columnName, files){
+        alert(columnName);
+        alert('$files');
+        var sort = $("#sort").val();
+        $.ajax({
+            url:'fetch_details.php',
+            type:'post',
+            data:{columnName:columnName,sort:sort},
+            success: function(response){
+        
+                $("#empTable tr:not(:first)").remove();
+                
+                $("#empTable").append(response);
+                if(sort == "asc"){
+                    $("#sort").val("desc");
+                }else{
+                    $("#sort").val("asc");
+                }
+            }
+        });
+    }
 </script>
