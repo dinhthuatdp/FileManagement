@@ -223,6 +223,19 @@
         </li>
         <li class="treeview">
           <a href="#">
+            <i class="fa fa-laptop"></i>
+            <span>Categories</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="../category/new"><i class="fa fa-circle-o"></i> Add new</a></li>
+            <li><a href="../boxed.html"><i class="fa fa-circle-o"></i> All</a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
             <i class="fa fa-files-o"></i>
             <span>Files</span>
             <span class="pull-right-container">
